@@ -1,0 +1,243 @@
+<form>
+    <div class="container-fluid pt-2 mb-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card border-secondary">
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">Customer Details
+                           
+                            </h4>
+                            <mat-form-field class="full-width" appearance="outline">
+                                <mat-label>Invoice No.</mat-label>
+                                <input [(ngModel)]="sales.invoiceno" required type="number" name="invoiceno"  matInput>
+                            </mat-form-field>
+                        <mat-card>
+                        <div class="row">
+                            <div class="col-md-4">
+                               
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter City</mat-label>
+                                    <input name="city"  [(ngModel)]="sales.customer.address.city" type="text"  placeholder="Enter here"  (ngModelChange)='cityChange($event)'   matInput>
+                                    
+                                  
+                                </mat-form-field>
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Contact</mat-label>
+                                    <input   [(ngModel)]="this.sales.customer.contact" name="contact" type="number"  readonly  matInput>
+                                </mat-form-field>
+                                
+                    
+                               
+                                
+                                
+                            </div>
+                            <div class="col-md-4">
+
+                                
+
+                                <mat-form-field appearance="fill" class=" full-width">
+                                    <mat-label>Customer Name</mat-label>
+                                    <mat-select  [(ngModel)]="custname" name="firstname"  (ngModelChange)="customerChange($event)">
+                                    <mat-option *ngFor="let c of customer ; let i=index" [value]="c.id" >
+                                        {{c.firstname}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Address</mat-label>
+                                    <input   [(ngModel)]=this.sales.customer.address.addressLine1 name="addressLine1" type="text"  readonly  matInput>
+                                </mat-form-field>
+                            
+
+                            </div>
+
+                            <div class="col-md-4">
+
+                                <mat-form-field appearance="fill" class=" full-width">
+                                    <mat-label>Guarantor</mat-label>
+                                    <mat-select  [(ngModel)]="guarantorname"   name="name" (ngModelChange)="guarantorChange($event)">
+                                    <mat-option *ngFor="let g of guarantor ; let i=index" [value]="g.id" >
+                                        {{g.name}}
+                                    </mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            
+
+
+
+                                
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Card No</mat-label>
+                                    <input  [(ngModel)]="this.sales.customer.card"  type="number" name="card" readonly  matInput>
+                                </mat-form-field>
+                            
+                                
+                            </div>
+                        </div>
+                    </mat-card>
+                    </div>
+                </div>
+
+
+                <div class="card border-secondary mt-2" >
+                    <div class="card-body">
+                        <h4 class="card-title d-flex justify-content-between">Order Details
+                             <button mat-raised-button color="primary"
+                             (click)="addProduct()" >+</button></h4>
+                        <div class="row">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th width="1%" >S.No.</th>
+                                        <th width="10%" >Product</th>
+                                        <th width="10%" >MRP</th>
+                                        <th width="7%">Qty</th>
+                                        <th width="10%" >Amt</th>
+                                        <th width="10%" >Down Pay</th>
+                                        <th width="10%" >Due</th>
+                                        <th width="3%" >Interest</th>
+                                        <th width="8%">EMI No</th>
+                                        <th width="10%" >Pro. Fee</th>
+                                        <th width="10%">EMI</th>
+                                
+                                       
+
+                                        
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    
+                                        <tr *ngFor="let item of sales.items; let i=index">
+                                            <td  scope="row">
+                                                <input type="text" class="form-control full-width" 
+                                                  
+                                                   value="{{i+1}}"
+                                                >
+                                        </td>
+                                       
+
+                                        <td>
+                                            <mat-form-field appearance="fill" class=" full-width">
+                                                <mat-label>Product</mat-label>
+                                                <mat-select ngModel  name="product{{i}}" (ngModelChange)="productChange($event , i)">
+                                                <mat-option *ngFor="let p of products ; let i=index" [value]="i">
+                                                    {{p.name}}
+                                                </mat-option>
+                                                </mat-select>
+                                            </mat-form-field>
+                                         </td>
+
+                                        <td>
+                                            <input type="number"  class="form-control full-width"   name="mrp{{i}}"
+                                            [(ngModel)]="item.product.mrp" readonly
+                                            >
+                                        </td>
+
+
+                                        
+                                        <td>
+                                            <input type="number" class="form-control full-width "  name="qty{{i}}" (ngModelChange)='qtyChange($event , i)'
+                                               
+                                            [(ngModel)]="item.qty" >
+                                        </td>
+
+                                        <td >
+                                            <input type="number" class="form-control full-width"   name="amount{{i}}" 
+                                            [(ngModel)]="item.amount" readonly
+                                            >
+                                        </td>
+                                        
+                                        
+                                        <td>
+                                            <input type="number" class="form-control full-width"    name="downpayment{{i}}" (ngModelChange)='downpaymentChange($event , i)'
+                                            [(ngModel)]="item.downpayment"
+                                                 required>
+                                        </td>
+                                        
+                                        <td>
+                                            <input type="number" class="form-control full-width"   name="due{{i}}" 
+                                            [(ngModel)]="item.due"
+                                                 readonly>
+                                        </td>
+                                       
+                                        <td>
+                                            <input type="number"  class="form-control full-width"  name="interest{{i}}" 
+                                                [(ngModel)]="item.interest" 
+                                                 >
+                                        </td>
+
+                                        
+                                        <td>
+                                            <input type="number" class="form-control full-width"  name="emicount{{i}}"     [(ngModel)]="item.emicount"
+                                                  required>
+                                        </td>
+
+                                        
+                                       
+                                        <td>
+                                            <input  type="number" class="form-control full-width"   name="processingamt{{i}}" (ngModelChange)="processingAmtChange($event ,i)"
+                                            [(ngModel)]="item.processingamt"
+                                            >
+                                        </td>
+                                       
+
+                                        <td>
+                                            <input type="number" class="form-control full-width"  name="emiamt{{i}}"
+                                                [(ngModel)]="item.emiamt" readonly
+                                                  >
+                                        </td>
+                                        
+                                            
+                                        <td>
+                                            <button mat-raised-button  color="primary" class="text-center full-width" (click)="openDialog(i)">edate</button>
+                                            
+                                           </td>
+
+                                        <td >
+                                            <button class="icon_class full-width"  (click)="deleteRow(i)">
+                                              <mat-icon >delete</mat-icon>
+                                            </button>
+                                            
+                                       
+                                       </td>
+
+                                       
+                                       
+                                         
+                                     
+                                    </tr>
+
+                                    
+                                    
+                                  </tbody>
+
+                                 
+                            </table>
+
+                            <div class="total_div">
+                                <b>Total Amt-</b> {{getAmtTotal()}}<br>
+                                <b> Downpayment-</b>{{getDownpaymentTotal()}}<br>
+                                 <b>Total Due-</b>{{getDueTotal()}}<br>
+                                 <b>Interest Total-</b>{{getInterestTotal()}}
+
+
+                            </div>
+                          
+                           
+                        </div>
+                          
+                    </div>
+                </div>
+               
+                <div class="text-center mt10">
+
+                    <button mat-raised-button color="primary" (click)="saveSales()">save</button>
+
+                </div>
+               
+            </div>

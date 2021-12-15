@@ -1,0 +1,35 @@
+
+
+    <div class="col-md-12 ">
+      <mat-toolbar color="primary"> 
+        <div class="col-md-10">
+          <h3>Choudhary Electronics</h3>
+  
+        </div>
+        <div class="col-md-2 login_logout_div">
+         
+          <a
+          *ngIf="!isLoggedIn"
+          routerLink="/login"
+          mat-icon-button class="example-icon favorite-icon ml20 mr20" aria-label="Example icon-button with heart icon">
+            Login
+        </a>
+      
+        
+        <a 
+          (click)="logout()"
+          *ngIf="isLoggedIn"
+          routerLink="/login"
+          mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+            Logout
+        </a>
+      
+          
+  
+  
+  
+        </div>
+      </mat-toolbar>
+    </div>
+
+

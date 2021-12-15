@@ -1,0 +1,17 @@
+.full-width
+{
+    width: 100%;
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom: -1.29em;
+    padding: 0px;
+}
+.icon_class
+{
+    width: 2px;
+    height: 2px;
+}
+.total_div
+{
+    text-align: right;
+}

@@ -1,0 +1,88 @@
+<mat-card class="product-card">
+    <h3>Add New Product</h3>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10" >
+
+                <form [formGroup]="productForm"  (ngSubmit)="addProduct()">
+                    <mat-card class="mt20 " >
+                    
+                        
+                        <div class="row">
+                            <div class="col-md-3">
+                                
+                                <mat-form-field  class="full-width" appearance="outline">
+                                    <mat-label>Enter Product Name</mat-label>
+                                    <input formControlName="name" required type="text" [(ngModel)]="product.name"  placeholder="Enter here" matInput>
+                                    <mat-error *ngIf="f.name.errors?.required">Name Required</mat-error>
+                                  
+                                </mat-form-field>
+
+                                
+                                
+                               
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <mat-form-field  class="full-width" appearance="outline">
+                                    <mat-label>Enter MRP</mat-label>
+                                    <input formControlName="mrp"  type="number" [(ngModel)]="product.mrp"  placeholder="Enter here" matInput>
+                                    <mat-error *ngIf="f.mrp.errors?.required">MRP Required</mat-error>
+                                  
+                                </mat-form-field>
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter Rate</mat-label>
+                                    <input formControlName="rate"  type="number"  [(ngModel)]="product.rate"  placeholder="Enter here" matInput>
+                                    <mat-error *ngIf="f.rate.errors?.required">Rate Required</mat-error>
+                                  
+                                </mat-form-field>
+                            </div>
+
+
+
+                            <div class="col-md-3">
+
+                                <mat-form-field  class="full-width" appearance="outline">
+                                    <mat-label>Enter Purchase Price</mat-label>
+                                    <input formControlName="purchaseprice" type="number" [(ngModel)]="product.purchaseprice"  placeholder="Enter here" matInput>
+                                </mat-form-field>
+
+
+                                <mat-form-field class="full-width"  appearance="outline">
+                                    <mat-label>Enter CGST/SGST</mat-label>
+                                    <input formControlName="cgst"  type="number" [(ngModel)]="product.cgst"  placeholder="Enter here" matInput>
+                                    <mat-error *ngIf="f.cgst.errors?.required">CGST Required</mat-error>
+                                  
+                                </mat-form-field>
+
+                                
+                            </div>
+
+                            <div class="col-md-3">
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter HSN</mat-label>
+                                    <input formControlName="hsn" required type="number" [(ngModel)]="product.hsn"  placeholder="Enter here" matInput>
+                                    <mat-error *ngIf="f.hsn.errors?.required">HSN Required</mat-error>
+                                  
+                                </mat-form-field>
+
+
+                               
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="container text-center mt20">
+                           <button [disabled]="productForm.invalid" type="submit" mat-raised-button color="primary">ADD</button>
+                       </div>
+                       </mat-card>
+                </form>
+
+
+                </div>
+            </div>
+        </div>
+    </mat-card>

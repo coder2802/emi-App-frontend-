@@ -1,0 +1,79 @@
+<h3 class="text-center"> Sales</h3>
+<div>
+
+    <button mat-raised-button  color="primary" [routerLink]="'/admin/add-sale/' + lastinvoiceno">New Sale</button>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Select Date</mat-label>
+        <input   type="date"  [(ngModel)]="date" name="invoicedate" (ngModelChange)="dateWiseSale($event)"    matInput>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label> InvoiceNo</mat-label>
+        <input   type="number"  ngModel  (ngModelChange)="invoiceWiseSale($event)"    matInput>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Total Sale</mat-label>
+        <input   type="number"  [(ngModel)]="totalSale" name="totalSale"  readonly  matInput>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Total Paid</mat-label>
+        <input   type="number"  [(ngModel)]="totalPaid" name="totalPaid"  readonly  matInput>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Total Unpaid </mat-label>
+        <input   type="number"  [(ngModel)]="totalDue" name="totalDue"  readonly  matInput>
+    </mat-form-field>
+
+    
+
+
+
+
+</div>
+
+<mat-card class="mt20">
+    <table class="table">
+        <tr class="full-width">
+            <th>Invoice No</th>
+            <th>Invoice Date</th>
+            <th>Customer</th>
+            <th>City</th>
+            <th>Product</th>
+            <th>Qty</th>
+            <th>Amount</th>
+            <th>Downpayment</th>
+            <th>Due</th>
+            
+            
+        
+
+        </tr>
+       
+        
+        <ng-container *ngFor="let s of displaySales | paginate: { itemsPerPage: 15, currentPage: page }  ">
+            <tr class="full-width" *ngFor="let item of s.items">
+            
+            <td>{{s.invoiceno}}</td>
+            <td>{{s.invoicedate}}</td>
+            <td>{{s.customer.firstname}} {{s.customer.lastname}}</td>
+            <td>{{s.customer.address.city}}</td>
+            <td>{{item.product.name}}</td>
+            <td>{{item.qty}}</td>
+            <td>{{item.amount}}</td>
+            <td>{{item.downpayment}}</td>
+            <td>{{item.due}}</td>
+            </tr>
+            
+        </ng-container>
+        
+        
+        
+    </table>
+
+    <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+    
+    
+</mat-card>

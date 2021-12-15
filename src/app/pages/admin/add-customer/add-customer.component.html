@@ -1,0 +1,157 @@
+<mat-card class="customer-card">
+    <h3>Add New Customer</h3>
+ 
+   
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 offset-md-2" >
+
+                    <form [formGroup]="customerForm" (ngSubmit)="addCustomer()" >
+                       
+
+                    <mat-card class="mt20 " >
+                    
+                        <mat-card-subtitle>Personal Details</mat-card-subtitle>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter Firstname </mat-label>
+                                    <input  formControlName="firstname" required type="text" [(ngModel)]="customerobject.customer.firstname"    placeholder="Enter here" matInput>
+                                    
+                                    
+                                    
+                                </mat-form-field>
+
+                                    
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter LastName</mat-label>
+                                    <input formControlName="lastname" required type="text"  [(ngModel)]="customerobject.customer.lastname"  placeholder="Enter here" matInput>
+                                    
+                                </mat-form-field>
+
+                                <mat-form-field class="full-width" appearance="outline" >
+                                    <mat-label>Enter  </mat-label>
+                                    <input formControlName="accountno" type="text" [(ngModel)]="customerobject.customer.accountno" placeholder="Enter here" matInput>
+                                    
+                                </mat-form-field>
+                                
+                          <!--      <input type="file"  name="myFile" (change)="fileEvent($event)"/>
+                                <button>Upload Image</button>
+                                -->
+
+                                
+                            </div>
+
+                            <div class="col-md-6">
+
+                                
+                                <mat-form-field class="full-width " appearance="outline">
+                                    <mat-label>Enter Email</mat-label>
+                                    <input formControlName="email"  type="text"  [(ngModel)]="customerobject.customer.email"  placeholder="Enter here" matInput>
+                                    
+                                </mat-form-field>
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter Contact</mat-label>
+                                    <input formControlName="contact" required type="number" [(ngModel)]="customerobject.customer.contact"  placeholder="Enter here" matInput>
+                                   
+                                </mat-form-field>
+                        
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Card No</mat-label>
+                                    <input formControlName="card"  type="number" [(ngModel)]="customerobject.customer.card"  placeholder="Enter here" matInput>
+                                   
+                                </mat-form-field>
+
+                                
+                            </div>
+                        </div>
+
+                        
+                        
+                  
+                        
+
+                    </mat-card>
+
+
+                    <!--Address field-->
+                    <mat-card class="mt20">
+                            <mat-card-subtitle>Address Details</mat-card-subtitle>
+                        <div class="row">
+                            <div class="col-md-6">
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Address Line1</mat-label>
+                                    <textarea formControlName="addressLine1" required   type="text"  [(ngModel)]="customerobject.address.addressLine1" placeholder="Enter here" matInput></textarea>
+                                    
+                                </mat-form-field>
+        
+                               
+        
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter Postal Code</mat-label>
+                                    <input  formControlName="postalcode" required   type="text"  [(ngModel)]= "customerobject.address.postalcode" placeholder="Enter here" matInput>
+                                    
+                                </mat-form-field>
+        
+                                
+                            </div>
+
+                            <div class="col-md-6">
+
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Address Line2</mat-label>
+                                    <textarea formControlName="addressLine2"  type="text"  [(ngModel)]= "customerobject.address.addressLine2" placeholder="Enter here" matInput></textarea>
+                                </mat-form-field>
+                                
+        
+                                <mat-form-field class="full-width" appearance="outline">
+                                    <mat-label>Enter City</mat-label>
+                                    <input formControlName="city" required   type="text"  [(ngModel)]= "customerobject.address.city"  placeholder="Enter here"  matInput>
+                                   
+                                </mat-form-field>
+
+                                <mat-form-field appearance="fill" class=" full-width">
+                                    <mat-label>State</mat-label>
+                                    <mat-select formControlName="state" [(ngModel)]= "customerobject.address.state"   >
+                                    <mat-option value="Madhaya Pradesh">
+                                        Madhaya Pradesh
+                                    </mat-option>
+                                    <mat-option value="Gujrat">
+                                        Gujrat
+                                   </mat-option>
+                                   <mat-option value="Rajasthan">
+                                        Rajasthan
+                                   </mat-option>
+                                   
+                                
+                                    </mat-select>
+                                </mat-form-field>
+                           
+        
+                            </div>
+                        </div>
+                    
+                       
+                       
+                        
+
+                     
+                        </mat-card>
+
+
+                       <div class="container text-center mt20">
+                           <button [disabled]="customerForm.invalid" type="submit" mat-raised-button color="primary">ADD</button>
+                       </div>
+    
+                    </form>
+
+
+                </div>
+            </div>
+        </div>
+
+        
+    </mat-card>

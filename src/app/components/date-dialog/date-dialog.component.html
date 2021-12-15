@@ -1,0 +1,11 @@
+<h2 mat-dialog-title>Select First Emi Date</h2>
+<mat-dialog-content>
+    
+    <mat-form-field>
+        <input matInput [(ngModel)]="firstemidate" type="date" placeholder="Enter Date">Select Date
+      </mat-form-field>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="doAction()">Add Date</button>
+    <button mat-button mat-dialog-close  mat-dialog-close="Cancel">Cancel</button>
+</mat-dialog-actions>

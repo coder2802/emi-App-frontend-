@@ -1,0 +1,59 @@
+<mat-card>
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Total Sale</mat-label>
+        <input   type="number"  [(ngModel)]="totalSale" name="totalSale"  readonly  matInput>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Total Paid</mat-label>
+        <input   type="number"  [(ngModel)]="totalPaid" name="totalPaid"  readonly  matInput>
+    </mat-form-field>
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Total Unpaid </mat-label>
+        <input   type="number"  [(ngModel)]="totalDue" name="totalDue"  readonly  matInput>
+    </mat-form-field>
+
+</mat-card>
+
+<mat-card class="mt20" >
+    <h6>Today's Due </h6>
+    <table class="table">
+        <tr class="full-width">
+            <th>Customer</th>
+            <th>Contact</th>
+            <th>City</th>
+            <th>Product</th>
+            <th>EMI AMOUNT</th>
+            
+            
+            
+        
+
+        </tr>
+       
+        
+        <ng-container *ngFor="let s of currentMonthSale   ">
+            <tr class="full-width"   *ngFor="let item of s.items">
+            
+            <td>{{s.customer.firstname}} {{s.customer.lastname}}</td>
+            <td>{{s.customer.contact}}</td>
+            <td>{{s.customer.address.city}}</td>
+            <td>{{item.product.name}}</td>
+            <td>{{item.emiamt.toFixed(2)}}</td>
+            <td  *ngIf=!item.status>
+                <button class="pay_button" color="primary"  (click)="openDialog(item.id)">Pay</button>
+            </td>
+           
+            </tr>
+            
+        </ng-container>
+        
+        
+        
+    </table>
+
+   
+</mat-card>
+
+

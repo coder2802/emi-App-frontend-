@@ -1,0 +1,47 @@
+<h3 class="text-center"> Customers</h3>
+
+<button mat-raised-button color="primary" routerLink="/admin/add-customer">
+    New
+</button>
+
+
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>Card No.</mat-label>
+    <input   type="number"  [(ngModel)]="cardno" name="cardno" (ngModelChange)="cardWiseCustomer($event)"    matInput>
+</mat-form-field>
+
+<mat-form-field class="full-width" appearance="outline">
+    <mat-label>City</mat-label>
+    <input   type="text"  [(ngModel)]="city" name="city" (ngModelChange)="cityWiseCustomer($event)"    matInput>
+</mat-form-field>
+
+
+
+<mat-card class="mt20">
+    <table class="table">
+        <tr class="full-width">
+            <th>Name</th>
+            <th>Contact</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>Account No.</th>
+            <th>Card No.</th>
+
+
+        </tr>
+        <tr class="full-width" *ngFor="let c of displayCustomer  | paginate: { itemsPerPage: 10, currentPage: page } ">
+            <td>{{c.firstname}} {{ c.lastname}}</td>
+            <td>{{c.contact}}</td>
+            <td>{{c.address.addressLine1}}</td>
+            <td>{{c.address.city}}</td>
+            <td>{{c.accountno}}</td>
+            <td>{{c.card}}</td>
+        </tr>
+
+        
+        
+        
+    </table>
+    <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+</mat-card>

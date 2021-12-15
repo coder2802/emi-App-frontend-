@@ -1,0 +1,13 @@
+.my-pagination /deep/ .ngx-pagination .current {
+    background:black;
+    text-align: center;
+  }
+  .full-width
+{
+    width: 13%;
+    font-size: 12px;
+    margin-top: 3px;
+    margin-bottom: -1.25em;
+    padding-right: 2px;
+    padding-left: 2px;
+}

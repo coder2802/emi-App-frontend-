@@ -1,0 +1,12 @@
+.full-width
+{
+    width: 100%;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: -0.5em;
+}
+
+.customer-card
+{
+    background-color: darkgray;
+}

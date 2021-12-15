@@ -1,0 +1,9 @@
+.my-pagination /deep/ .ngx-pagination .current {
+    background:black;
+    text-align: center;
+  }
+
+  .mat-card-style
+  {
+    height: 85px;
+  }

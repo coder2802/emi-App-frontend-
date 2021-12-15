@@ -1,0 +1,23 @@
+.full-width
+{
+    width: 20%;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: -1.25em;
+}
+.my-pagination /deep/ .ngx-pagination .current {
+    background:black;
+    text-align: center;
+  }
+
+  .pay_button
+  {
+      
+      background-color: #ff0000;
+      
+  }
+
+  .paid_button
+  {
+      background-color: green;
+  }

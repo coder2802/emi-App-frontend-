@@ -1,0 +1,70 @@
+<h3 class="text-center">EMI Track</h3>
+
+
+    <div class="row">
+        <div class="col-md-8">
+
+            <mat-form-field class="full-width" appearance="outline">
+                <mat-label>Select Date</mat-label>
+                <input   type="date"  [(ngModel)]="date" name="invoicedate" (ngModelChange)="dateWiseSale($event)"    matInput>
+            </mat-form-field>
+        </div>
+
+    </div>
+    
+
+    
+
+
+
+
+
+<mat-card class="mt20">
+    <table class="table">
+        <tr class="full-width">
+            <th>Invoice No</th>
+            <th>Invoice Date</th>
+            <th>Customer</th>
+            <th>City</th>
+            <th>Product</th>
+            <th>EMI AMOUNT</th>
+            <th>Total EMI</th>
+            <th>Unpaid EMI</th>
+            <th>EMI Date</th>
+            
+            
+            
+        
+
+        </tr>
+       
+        
+        <ng-container *ngFor="let s of displaySales  | paginate: { itemsPerPage: 10, currentPage: page } ">
+            <tr class="full-width"   *ngFor="let item of s.items">
+            
+            <td>{{s.invoiceno}}</td>
+            <td>{{s.invoicedate}}</td>
+            <td>{{s.customer.firstname}} {{s.customer.lastname}}</td>
+            <td>{{s.customer.address.city}}</td>
+            <td>{{item.product.name}}</td>
+            <td>{{item.emiamt.toFixed(2)}}</td>
+            <td>{{item.emicount}}</td>
+            <td>{{item.unpaidemicount}}</td>
+            <td>{{item.nextemidate | date: 'dd/MM/yyyy'}}</td>
+            <td  *ngIf=!item.status>
+                <button class="pay_button" color="primary"  (click)="openDialog(item.id)">Pay</button>
+            </td>
+            <td   *ngIf=item.status>
+                <button class="paid_button" color="primary"  >Paid</button>
+            </td>
+
+            </tr>
+            
+        </ng-container>
+        
+        
+        
+    </table>
+
+    <pagination-controls class="text-center my-pagination" (pageChange)="page = $event"></pagination-controls>
+</mat-card>

@@ -1,0 +1,24 @@
+<h3 class="text-center">Guarantor</h3>
+
+<div>
+    <form [formGroup]="guarantorForm"  (ngSubmit)="addGuarantor()">
+        <mat-card>
+            <mat-form-field  class="full-width" appearance="outline">
+            <mat-label>Enter Name</mat-label>
+            <input formControlName="name" required type="text"  [(ngModel)]="guarantor.name"  placeholder="Enter here" matInput>
+            </mat-form-field>
+
+            <mat-form-field  class="full-width"  appearance="outline">
+            <mat-label>Enter Contact</mat-label>
+            <input formControlName="contact" required type="number"  [(ngModel)]="guarantor.contact"  placeholder="Enter here" matInput>
+            </mat-form-field>
+
+            <div class="text-center mt20">
+                <button [disabled]="guarantorForm.invalid" type="submit" mat-raised-button color="primary" >ADD</button>
+            </div>
+           
+        </mat-card>
+    </form>
+    
+
+</div>

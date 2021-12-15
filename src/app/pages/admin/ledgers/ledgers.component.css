@@ -1,0 +1,45 @@
+.div_row
+{
+    border: 1px solid black;
+  background-color: lightblue;
+  padding-top: 10px;
+ 
+
+}
+.div_p
+{
+    margin-bottom: 0.3rem;
+}
+
+.div_col
+{
+    padding-left: 2rem;
+}
+
+.card_style
+{
+    max-height: fit-content;
+}
+
+.full-width
+{
+    width: 100%;
+    font-size: 13px;
+    margin-top: 3px;
+    margin-bottom: -1.25em;
+}
+
+.div_guarantor
+{
+    text-align: right;
+}
+
+.mt20
+{
+    margin-top: 10px;
+}
+
+.text-center
+{
+    text-align: center;
+}

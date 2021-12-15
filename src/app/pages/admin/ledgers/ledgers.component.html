@@ -1,0 +1,178 @@
+<h3 class="text-center">Print Ledger</h3>
+
+<mat-card id="search-section">
+<div class=" row card_style">
+    <div class="col-md-2">
+
+    <mat-form-field class="full-width" appearance="outline">
+        <mat-label>Enter City</mat-label>
+        <input required  [(ngModel)]="city" type="text" name="city" placeholder="Enter here"  (ngModelChange)='cityChange($event)'   matInput>
+        
+    </mat-form-field>
+
+    </div>
+    <div class="col-md-2">
+    <mat-form-field appearance="fill" class=" full-width">
+        <mat-label>Customer Name</mat-label>
+        <mat-select  [(ngModel)]="custName"  name="firstname" (ngModelChange)="getCustomerSale($event)">
+        <mat-option *ngFor="let c of customer ; let i=index" [value]="c.id" >
+            {{c.firstname}}
+        </mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    
+    </div>
+
+    <div class="col-md-2">
+        <mat-form-field appearance="fill" class=" full-width">
+            <mat-label>Sales Date</mat-label>
+            <mat-select  [(ngModel)]="customerSaleIndex"  name="customerSaleIndex" (ngModelChange)="changeCustomerSaleIndex($event)" >
+            <mat-option *ngFor="let s of customerSales ; let i=index" [value]="i" >
+                {{s.invoicedate}}
+            </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+        <div class="col-md-2">
+            <mat-form-field appearance="fill" class=" full-width">
+                <mat-label>Product</mat-label>
+                <mat-select  [(ngModel)]="customerSaleItemIndex"  name="customerSaleItemIndex" >
+                <mat-option *ngFor="let item of customerSales[customerSaleIndex].items ; let i=index" [value]="i" >
+                    {{item.product.name}}
+                </mat-option>
+                </mat-select>
+            </mat-form-field>
+        
+            
+            </div>
+       
+       
+    
+
+
+
+    
+   
+</div>
+</mat-card>
+
+<div  id="print-section">
+<mat-card *ngIf="custName" class="mt20">
+    <h4 class="text-center">Ledger</h4>
+    <div class="row" *ngIf="custName">
+        <div class="col-md-6">
+
+            <h6>Customer: {{customerSales[customerSaleIndex].customer.firstname}} {{customerSales[customerSaleIndex].customer.lastname}}</h6>
+            <h6>Contact:{{customerSales[customerSaleIndex].customer.contact}} </h6>
+     
+        </div>
+
+        <div class="col-md-6 div_guarantor">
+
+            <h6>Guarantor: {{customerSales[customerSaleIndex].guarantor.name}}</h6>
+            <h6>Contact:{{customerSales[customerSaleIndex].guarantor.contact}} </h6>
+     
+        </div>
+      
+
+       
+      
+ 
+     
+    
+    </div>
+    
+    
+
+    <div *ngIf="custName" class="row">
+           <div class="col-md-3">
+
+            <p>Product: <b>{{customerSales[customerSaleIndex].items[customerSaleItemIndex].product.name}}</b></p>
+       
+
+           </div>
+           <div class="col-md-3">
+
+            <p>Purchase Date: <b>{{customerSales[customerSaleIndex].invoicedate}}</b></p>
+           </div>
+           <div class="col-md-3">
+
+            <p>Downpayment: <b>Rs. {{customerSales[customerSaleIndex].items[customerSaleItemIndex].downpayment.toFixed(2)}}/-</b></p>
+           </div>
+           <div class="col-md-3">
+
+            <p>Interest: <b>Rs. {{customerSales[customerSaleIndex].items[customerSaleItemIndex].interestamt.toFixed(2)}}</b></p>
+           </div>
+    </div>
+
+   
+
+
+
+<div *ngIf="custName" class="row div_row">
+    <div class="col-md-3 ">
+
+        <p><b>Due Date</b></p>
+        <div   *ngFor="let dates of customerSales[customerSaleIndex].items[customerSaleItemIndex].map | keyvalue">
+            <p class="div_p">{{dates.key | date: 'dd/MM/yyyy'}}</p>
+            
+        </div>
+
+
+    </div>
+    <div class="col-md-2 div_col">
+
+        <p><b>Due Amt</b></p>
+        <div *ngFor="let dates of customerSales[customerSaleIndex].items[customerSaleItemIndex].map | keyvalue">
+            <p class="div_p">{{customerSales[customerSaleIndex].items[customerSaleItemIndex].emiamt.toFixed(2)}}</p>
+            
+        </div>
+    </div>
+
+    <div class="col-md-2 ">
+
+        <p><b>Pay Date</b></p>
+        <div *ngFor="let dates of customerSales[customerSaleIndex].items[customerSaleItemIndex].emimap | keyvalue">
+            <p class="div_p">{{dates.key  | date: 'dd/MM/yyyy'}}</p>
+            
+        </div>
+    </div>
+
+    <div class="col-md-2 div_col ">
+
+        <p><b>Panelty</b></p>
+        <div *ngFor="let dates of customerSales[customerSaleIndex].items[customerSaleItemIndex].emimap | keyvalue">
+            <p class="div_p">{{(dates.value - customerSales[customerSaleIndex].items[customerSaleItemIndex].emiamt).toFixed(2)  }}</p>
+            
+        </div>
+
+
+    </div>
+    
+
+    <div class="col-md-2 div_col ">
+
+        <p><b>Recieved Amt</b></p>
+        <div *ngFor="let dates of customerSales[customerSaleIndex].items[customerSaleItemIndex].emimap | keyvalue">
+            <p class="div_p">{{dates.value.toFixed(2)  }}</p>
+            
+        </div>
+
+
+    </div>
+    
+    
+
+</div>
+        <div class="text-center mt20">
+            <button *ngIf="custName" mat-raised-button color="primary" class="text-center mt20" id="print-button" (click)="printPage()">print</button>
+        </div>
+</mat-card>
+</div>
+<!-- <button ngxPrint printSectionId="print-section">Print</button> -->
+
+
+  
+

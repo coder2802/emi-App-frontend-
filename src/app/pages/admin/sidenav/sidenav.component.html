@@ -1,0 +1,41 @@
+<mat-card>
+    <mat-action-list>
+        <div mat-subheader>Menu</div>
+
+        <button mat-list-item  (click)="routerClick('/admin/home')">
+            <mat-icon mat-list-icon>home</mat-icon>Home
+        </button>
+
+        <button mat-list-item      (click)="routerClick('/admin/view-product')" >
+            <mat-icon mat-list-icon>control_point</mat-icon>Products
+        </button>
+
+        <button mat-list-item routerLink="/admin/view-customer">
+            <mat-icon mat-list-icon>control_point</mat-icon>Customers
+        </button>
+
+        <button mat-list-item routerLink="/admin/guarantor">
+            <mat-icon mat-list-icon>control_point</mat-icon>Guarantor
+        </button>
+
+        <button mat-list-item routerLink="/admin/view-sales">
+            <mat-icon mat-list-icon>control_point</mat-icon>Sales
+        </button>
+
+        <button mat-list-item routerLink="/admin/emi">
+            <mat-icon mat-list-icon>control_point</mat-icon>EMI Track
+        </button>
+
+        <button mat-list-item routerLink="/admin/ledger">
+            <mat-icon mat-list-icon>control_point</mat-icon>Ledgers
+        </button>
+       
+       
+        <button mat-list-item (click)="logout()"
+        *ngIf="loginService.isLoggedIn()"
+        routerLink="/login" 
+         >
+            <mat-icon mat-list-icon>logout</mat-icon>Logout
+        </button>
+    </mat-action-list>
+</mat-card>

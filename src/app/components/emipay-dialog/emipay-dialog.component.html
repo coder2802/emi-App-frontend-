@@ -1,0 +1,37 @@
+<mat-dialog-content>
+    
+    <mat-form-field>
+        <input matInput type="date" name="dueDate" [(ngModel)]="dueDate" placeholder="Due Date " readonly>
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" name="emiamt" [(ngModel)]="salesitem.emiamt" placeholder="EMI Amount" readonly>
+      </mat-form-field><br>
+      <mat-form-field >
+        <input matInput type="date" name="paydate" [(ngModel)]="paydate" placeholder="Enter Paydate" (ngModelChange)="calLateDays($event)">
+      </mat-form-field>
+      <mat-form-field >
+        <input matInput type="number" name="latedays" [(ngModel)]="latedays" placeholder="Enter latedays" readonly >
+      </mat-form-field><br>
+      <mat-form-field>
+        <input matInput type="number" name="panelty" [(ngModel)]="panelty" (ngModelChange)="calLateCharge($event)" placeholder="Enter Panelty">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput type="number" name="netamount" [(ngModel)]="netamount" placeholder="Net Amount" readonly>
+      </mat-form-field><br>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="payEmi()" >Pay</button>
+    <button mat-button mat-dialog-close (click)="onCancelClick()" >Cancel</button>
+</mat-dialog-actions>
+
+
+
+
+
+
+
+
+
+
+
